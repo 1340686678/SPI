@@ -93,8 +93,8 @@ int main(void)
   MX_QUADSPI_Init();
   /* USER CODE BEGIN 2 */
 	printf("work\r\n");
-  uint8_t data1[16];
-  uint8_t data2[16];
+  uint8_t data1[256] = {0};
+  uint8_t data2[256] = {0};
   QSPI_InitFlash();
   printf("Completed!\r\n");
   printf("read JEDEC:%x\r\n",QSPI_ReadJEDEC());
@@ -115,7 +115,9 @@ int main(void)
   HAL_Delay(1000);
     
   printf("Reading data:\r\n");
-  QSPI_QuadOutputFastRead(data2, 0, sizeof(data2));
+  QSPI_SetQuardEnable(true);
+  printf("QuadRead:%d\r\n",QSPI_QuadOutputFastRead(data2, 0, sizeof(data2)));
+  
   for(int i = 0; i < sizeof(data2); i++){
     printf("0X%x  ", data2[i]);
     if(i%8 == 7){

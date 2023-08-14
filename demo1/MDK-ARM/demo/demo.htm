@@ -3,11 +3,11 @@
 <title>Static Call Graph - [demo\demo.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image demo\demo.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Sun Aug 13 13:47:06 2023
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Mon Aug 14 21:36:16 2023
 <BR><P>
-<H3>Maximum Stack Usage =        384 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =        868 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
-main &rArr; MX_QUADSPI_Init &rArr; HAL_QSPI_Init &rArr; HAL_QSPI_MspInit &rArr; HAL_RCCEx_PeriphCLKConfig &rArr; RCCEx_PLL3_Config
+main &rArr; QSPI_SetQuardEnable &rArr; QSPI_WriteStatusReg &rArr; QSPI_AutoPollingWriteEnabled &rArr; HAL_QSPI_Command &rArr; QSPI_Config
 <P>
 <H3>
 Mutually Recursive functions
@@ -184,7 +184,7 @@ Global Symbols
 <P><STRONG><a name="[98]"></a>__main</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry.o(.ARM.Collect$$$$00000000))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32h750xx.o(.text)
 </UL>
-<P><STRONG><a name="[e0]"></a>_main_stk</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry2.o(.ARM.Collect$$$$00000001))
+<P><STRONG><a name="[e3]"></a>_main_stk</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry2.o(.ARM.Collect$$$$00000001))
 
 <P><STRONG><a name="[9a]"></a>_main_scatterload</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry5.o(.ARM.Collect$$$$00000004))
 <BR><BR>[Calls]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload
@@ -194,15 +194,15 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload
 </UL>
 
-<P><STRONG><a name="[e1]"></a>_main_clock</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry7b.o(.ARM.Collect$$$$00000008))
+<P><STRONG><a name="[e4]"></a>_main_clock</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry7b.o(.ARM.Collect$$$$00000008))
 
-<P><STRONG><a name="[e2]"></a>_main_cpp_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry8b.o(.ARM.Collect$$$$0000000A))
+<P><STRONG><a name="[e5]"></a>_main_cpp_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry8b.o(.ARM.Collect$$$$0000000A))
 
-<P><STRONG><a name="[e3]"></a>_main_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry9a.o(.ARM.Collect$$$$0000000B))
+<P><STRONG><a name="[e6]"></a>_main_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry9a.o(.ARM.Collect$$$$0000000B))
 
-<P><STRONG><a name="[e4]"></a>__rt_final_cpp</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry10a.o(.ARM.Collect$$$$0000000D))
+<P><STRONG><a name="[e7]"></a>__rt_final_cpp</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry10a.o(.ARM.Collect$$$$0000000D))
 
-<P><STRONG><a name="[e5]"></a>__rt_final_exit</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry11a.o(.ARM.Collect$$$$0000000F))
+<P><STRONG><a name="[e8]"></a>__rt_final_exit</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry11a.o(.ARM.Collect$$$$0000000F))
 
 <P><STRONG><a name="[0]"></a>Reset_Handler</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, startup_stm32h750xx.o(.text))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32h750xx.o(RESET)
@@ -637,24 +637,24 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_llsr
 <LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_llsl
 </UL>
-<BR>[Called By]<UL><LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_core
+<BR>[Called By]<UL><LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_core
 <LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_SetConfig
 </UL>
 
-<P><STRONG><a name="[df]"></a>rand</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, rand.o(.text))
+<P><STRONG><a name="[e2]"></a>rand</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, rand.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[e6]"></a>srand</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, rand.o(.text), UNUSED)
+<P><STRONG><a name="[e9]"></a>srand</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, rand.o(.text), UNUSED)
 
 <P><STRONG><a name="[a0]"></a>__aeabi_memset</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, memseta.o(.text), UNUSED)
 <BR><BR>[Called By]<UL><LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_memset$wrapper
 <LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr
 </UL>
 
-<P><STRONG><a name="[e7]"></a>__aeabi_memset4</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memseta.o(.text), UNUSED)
+<P><STRONG><a name="[ea]"></a>__aeabi_memset4</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memseta.o(.text), UNUSED)
 
-<P><STRONG><a name="[e8]"></a>__aeabi_memset8</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memseta.o(.text), UNUSED)
+<P><STRONG><a name="[eb]"></a>__aeabi_memset8</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memseta.o(.text), UNUSED)
 
 <P><STRONG><a name="[9f]"></a>__aeabi_memclr</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, memseta.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memset
@@ -663,10 +663,11 @@ Global Symbols
 <P><STRONG><a name="[b4]"></a>__aeabi_memclr4</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memseta.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_QSPI_MspInit
 <LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_MspInit
-<LI><a href="#[d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemClock_Config
+<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemClock_Config
 </UL>
 
-<P><STRONG><a name="[e9]"></a>__aeabi_memclr8</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memseta.o(.text), UNUSED)
+<P><STRONG><a name="[ec]"></a>__aeabi_memclr8</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memseta.o(.text), UNUSED)
 
 <P><STRONG><a name="[a1]"></a>_memset$wrapper</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, memseta.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memset
@@ -676,13 +677,13 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_uldivmod
 </UL>
 
-<P><STRONG><a name="[ea]"></a>_ll_shift_l</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, llshl.o(.text), UNUSED)
+<P><STRONG><a name="[ed]"></a>_ll_shift_l</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, llshl.o(.text), UNUSED)
 
 <P><STRONG><a name="[9d]"></a>__aeabi_llsr</STRONG> (Thumb, 32 bytes, Stack size 0 bytes, llushr.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_uldivmod
 </UL>
 
-<P><STRONG><a name="[eb]"></a>_ll_ushift_r</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, llushr.o(.text), UNUSED)
+<P><STRONG><a name="[ee]"></a>_ll_ushift_r</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, llushr.o(.text), UNUSED)
 
 <P><STRONG><a name="[9b]"></a>__scatterload</STRONG> (Thumb, 28 bytes, Stack size 0 bytes, init.o(.text))
 <BR><BR>[Calls]<UL><LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__main_after_scatterload
@@ -690,7 +691,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_main_scatterload
 </UL>
 
-<P><STRONG><a name="[ec]"></a>__scatterload_rt2</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, init.o(.text), UNUSED)
+<P><STRONG><a name="[ef]"></a>__scatterload_rt2</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, init.o(.text), UNUSED)
 
 <P><STRONG><a name="[4]"></a>BusFault_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32h7xx_it.o(i.BusFault_Handler))
 <BR><BR>[Calls]<UL><LI><a href="#[4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BusFault_Handler
@@ -747,7 +748,7 @@ Global Symbols
 <LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_CheckIdleState
 </UL>
 
-<P><STRONG><a name="[d8]"></a>HAL_IncTick</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, stm32h7xx_hal.o(i.HAL_IncTick))
+<P><STRONG><a name="[da]"></a>HAL_IncTick</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, stm32h7xx_hal.o(i.HAL_IncTick))
 <BR><BR>[Called By]<UL><LI><a href="#[9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysTick_Handler
 </UL>
 
@@ -797,7 +798,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GetTick
 </UL>
-<BR>[Called By]<UL><LI><a href="#[d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemClock_Config
+<BR>[Called By]<UL><LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemClock_Config
 </UL>
 
 <P><STRONG><a name="[ae]"></a>HAL_QSPI_AutoPolling</STRONG> (Thumb, 172 bytes, Stack size 40 bytes, stm32h7xx_hal_qspi.o(i.HAL_QSPI_AutoPolling))
@@ -807,7 +808,8 @@ Global Symbols
 <LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;QSPI_WaitFlagStateUntilTimeout
 <LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;QSPI_Config
 </UL>
-<BR>[Called By]<UL><LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;QSPI_AutoPollingWriteEnabled
+<BR>[Called By]<UL><LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;QSPI_SetQuardEnable
+<LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;QSPI_AutoPollingWriteEnabled
 <LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;QSPI_AutoPollingMemReady
 </UL>
 
@@ -818,11 +820,13 @@ Global Symbols
 <LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;QSPI_WaitFlagStateUntilTimeout
 <LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;QSPI_Config
 </UL>
-<BR>[Called By]<UL><LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;QSPI_Write
+<BR>[Called By]<UL><LI><a href="#[d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;QSPI_Write
 <LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;QSPI_ReadJEDEC
-<LI><a href="#[d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;QSPI_Read
+<LI><a href="#[d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;QSPI_QuadOutputFastRead
 <LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;QSPI_InitFlash
 <LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;QSPI_EraseSector
+<LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;QSPI_WriteStatusReg
+<LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;QSPI_ReadStatusReg
 <LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;QSPI_AutoPollingWriteEnabled
 </UL>
 
@@ -854,7 +858,8 @@ Global Symbols
 <LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;QSPI_WaitFlagStateUntilTimeout
 </UL>
 <BR>[Called By]<UL><LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;QSPI_ReadJEDEC
-<LI><a href="#[d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;QSPI_Read
+<LI><a href="#[d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;QSPI_QuadOutputFastRead
+<LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;QSPI_ReadStatusReg
 </UL>
 
 <P><STRONG><a name="[b9]"></a>HAL_QSPI_Transmit</STRONG> (Thumb, 182 bytes, Stack size 40 bytes, stm32h7xx_hal_qspi.o(i.HAL_QSPI_Transmit))
@@ -863,7 +868,8 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GetTick
 <LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;QSPI_WaitFlagStateUntilTimeout
 </UL>
-<BR>[Called By]<UL><LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;QSPI_Write
+<BR>[Called By]<UL><LI><a href="#[d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;QSPI_Write
+<LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;QSPI_WriteStatusReg
 </UL>
 
 <P><STRONG><a name="[ba]"></a>HAL_RCCEx_GetD3PCLK1Freq</STRONG> (Thumb, 26 bytes, Stack size 8 bytes, stm32h7xx_hal_rcc_ex.o(i.HAL_RCCEx_GetD3PCLK1Freq))
@@ -874,13 +880,13 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_SetConfig
 </UL>
 
-<P><STRONG><a name="[da]"></a>HAL_RCCEx_GetPLL2ClockFreq</STRONG> (Thumb, 296 bytes, Stack size 12 bytes, stm32h7xx_hal_rcc_ex.o(i.HAL_RCCEx_GetPLL2ClockFreq))
+<P><STRONG><a name="[dc]"></a>HAL_RCCEx_GetPLL2ClockFreq</STRONG> (Thumb, 296 bytes, Stack size 12 bytes, stm32h7xx_hal_rcc_ex.o(i.HAL_RCCEx_GetPLL2ClockFreq))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = HAL_RCCEx_GetPLL2ClockFreq
 </UL>
 <BR>[Called By]<UL><LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_SetConfig
 </UL>
 
-<P><STRONG><a name="[db]"></a>HAL_RCCEx_GetPLL3ClockFreq</STRONG> (Thumb, 296 bytes, Stack size 12 bytes, stm32h7xx_hal_rcc_ex.o(i.HAL_RCCEx_GetPLL3ClockFreq))
+<P><STRONG><a name="[dd]"></a>HAL_RCCEx_GetPLL3ClockFreq</STRONG> (Thumb, 296 bytes, Stack size 12 bytes, stm32h7xx_hal_rcc_ex.o(i.HAL_RCCEx_GetPLL3ClockFreq))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = HAL_RCCEx_GetPLL3ClockFreq
 </UL>
 <BR>[Called By]<UL><LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_SetConfig
@@ -904,7 +910,7 @@ Global Symbols
 <LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GetTick
 <LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_GetSysClockFreq
 </UL>
-<BR>[Called By]<UL><LI><a href="#[d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemClock_Config
+<BR>[Called By]<UL><LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemClock_Config
 </UL>
 
 <P><STRONG><a name="[bb]"></a>HAL_RCC_GetHCLKFreq</STRONG> (Thumb, 52 bytes, Stack size 12 bytes, stm32h7xx_hal_rcc.o(i.HAL_RCC_GetHCLKFreq))
@@ -947,7 +953,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GetTick
 <LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GetREVID
 </UL>
-<BR>[Called By]<UL><LI><a href="#[d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemClock_Config
+<BR>[Called By]<UL><LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemClock_Config
 </UL>
 
 <P><STRONG><a name="[aa]"></a>HAL_SYSTICK_Config</STRONG> (Thumb, 38 bytes, Stack size 8 bytes, stm32h7xx_hal_cortex.o(i.HAL_SYSTICK_Config))
@@ -1018,7 +1024,7 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32h750xx.o(RESET)
 </UL>
-<P><STRONG><a name="[de]"></a>MX_GPIO_Init</STRONG> (Thumb, 102 bytes, Stack size 8 bytes, gpio.o(i.MX_GPIO_Init))
+<P><STRONG><a name="[e0]"></a>MX_GPIO_Init</STRONG> (Thumb, 102 bytes, Stack size 8 bytes, gpio.o(i.MX_GPIO_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = MX_GPIO_Init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
@@ -1081,10 +1087,10 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[d4]"></a>QSPI_Read</STRONG> (Thumb, 96 bytes, Stack size 80 bytes, qspi_flash.o(i.QSPI_Read))
-<BR><BR>[Stack]<UL><LI>Max Depth = 148<LI>Call Chain = QSPI_Read &rArr; HAL_QSPI_Command &rArr; QSPI_Config
+<P><STRONG><a name="[d4]"></a>QSPI_QuadOutputFastRead</STRONG> (Thumb, 124 bytes, Stack size 80 bytes, qspi_flash.o(i.QSPI_QuadOutputFastRead))
+<BR><BR>[Stack]<UL><LI>Max Depth = 220<LI>Call Chain = QSPI_QuadOutputFastRead &rArr; QSPI_ReadStatusReg &rArr; HAL_QSPI_Command &rArr; QSPI_Config
 </UL>
-<BR>[Calls]<UL><LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
+<BR>[Calls]<UL><LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;QSPI_ReadStatusReg
 <LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_QSPI_Receive
 <LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_QSPI_Command
 </UL>
@@ -1100,7 +1106,27 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[d7]"></a>QSPI_Write</STRONG> (Thumb, 162 bytes, Stack size 88 bytes, qspi_flash.o(i.QSPI_Write))
+<P><STRONG><a name="[d5]"></a>QSPI_ReadStatusReg</STRONG> (Thumb, 96 bytes, Stack size 72 bytes, qspi_flash.o(i.QSPI_ReadStatusReg))
+<BR><BR>[Stack]<UL><LI>Max Depth = 140<LI>Call Chain = QSPI_ReadStatusReg &rArr; HAL_QSPI_Command &rArr; QSPI_Config
+</UL>
+<BR>[Calls]<UL><LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_QSPI_Receive
+<LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_QSPI_Command
+</UL>
+<BR>[Called By]<UL><LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;QSPI_SetQuardEnable
+<LI><a href="#[d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;QSPI_QuadOutputFastRead
+</UL>
+
+<P><STRONG><a name="[d7]"></a>QSPI_SetQuardEnable</STRONG> (Thumb, 154 bytes, Stack size 104 bytes, qspi_flash.o(i.QSPI_SetQuardEnable))
+<BR><BR>[Stack]<UL><LI>Max Depth = 356<LI>Call Chain = QSPI_SetQuardEnable &rArr; QSPI_WriteStatusReg &rArr; QSPI_AutoPollingWriteEnabled &rArr; HAL_QSPI_Command &rArr; QSPI_Config
+</UL>
+<BR>[Calls]<UL><LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;QSPI_WriteStatusReg
+<LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;QSPI_ReadStatusReg
+<LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_QSPI_AutoPolling
+</UL>
+<BR>[Called By]<UL><LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+</UL>
+
+<P><STRONG><a name="[d9]"></a>QSPI_Write</STRONG> (Thumb, 162 bytes, Stack size 88 bytes, qspi_flash.o(i.QSPI_Write))
 <BR><BR>[Stack]<UL><LI>Max Depth = 260<LI>Call Chain = QSPI_Write &rArr; QSPI_AutoPollingWriteEnabled &rArr; HAL_QSPI_Command &rArr; QSPI_Config
 </UL>
 <BR>[Calls]<UL><LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;QSPI_AutoPollingWriteEnabled
@@ -1111,15 +1137,26 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
+<P><STRONG><a name="[d8]"></a>QSPI_WriteStatusReg</STRONG> (Thumb, 110 bytes, Stack size 80 bytes, qspi_flash.o(i.QSPI_WriteStatusReg))
+<BR><BR>[Stack]<UL><LI>Max Depth = 252<LI>Call Chain = QSPI_WriteStatusReg &rArr; QSPI_AutoPollingWriteEnabled &rArr; HAL_QSPI_Command &rArr; QSPI_Config
+</UL>
+<BR>[Calls]<UL><LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;QSPI_AutoPollingWriteEnabled
+<LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;QSPI_AutoPollingMemReady
+<LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_QSPI_Transmit
+<LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_QSPI_Command
+</UL>
+<BR>[Called By]<UL><LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;QSPI_SetQuardEnable
+</UL>
+
 <P><STRONG><a name="[6]"></a>SVC_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32h7xx_it.o(i.SVC_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32h750xx.o(RESET)
 </UL>
 <P><STRONG><a name="[9]"></a>SysTick_Handler</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32h7xx_it.o(i.SysTick_Handler))
-<BR><BR>[Calls]<UL><LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_IncTick
+<BR><BR>[Calls]<UL><LI><a href="#[da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_IncTick
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32h750xx.o(RESET)
 </UL>
-<P><STRONG><a name="[d9]"></a>SystemClock_Config</STRONG> (Thumb, 136 bytes, Stack size 128 bytes, main.o(i.SystemClock_Config))
+<P><STRONG><a name="[db]"></a>SystemClock_Config</STRONG> (Thumb, 136 bytes, Stack size 128 bytes, main.o(i.SystemClock_Config))
 <BR><BR>[Stack]<UL><LI>Max Depth = 200<LI>Call Chain = SystemClock_Config &rArr; HAL_RCC_ClockConfig &rArr; HAL_InitTick &rArr; HAL_NVIC_SetPriority
 </UL>
 <BR>[Calls]<UL><LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_OscConfig
@@ -1151,8 +1188,8 @@ Global Symbols
 <P><STRONG><a name="[c8]"></a>UART_SetConfig</STRONG> (Thumb, 876 bytes, Stack size 56 bytes, stm32h7xx_hal_uart.o(i.UART_SetConfig))
 <BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = UART_SetConfig &rArr; __aeabi_uldivmod
 </UL>
-<BR>[Calls]<UL><LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCCEx_GetPLL3ClockFreq
-<LI><a href="#[da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCCEx_GetPLL2ClockFreq
+<BR>[Calls]<UL><LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCCEx_GetPLL3ClockFreq
+<LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCCEx_GetPLL2ClockFreq
 <LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCCEx_GetD3PCLK1Freq
 <LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_GetPCLK2Freq
 <LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_GetPCLK1Freq
@@ -1177,24 +1214,23 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32h750xx.o(RESET)
 </UL>
-<P><STRONG><a name="[dc]"></a>__0printf$5</STRONG> (Thumb, 22 bytes, Stack size 24 bytes, printf5.o(i.__0printf$5), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_core
+<P><STRONG><a name="[de]"></a>__0printf$5</STRONG> (Thumb, 22 bytes, Stack size 24 bytes, printf5.o(i.__0printf$5), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_core
 </UL>
 
-<P><STRONG><a name="[ed]"></a>__1printf$5</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printf5.o(i.__0printf$5), UNUSED)
+<P><STRONG><a name="[f0]"></a>__1printf$5</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printf5.o(i.__0printf$5), UNUSED)
 
-<P><STRONG><a name="[d5]"></a>__2printf</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printf5.o(i.__0printf$5))
+<P><STRONG><a name="[e1]"></a>__2printf</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printf5.o(i.__0printf$5))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = __2printf
 </UL>
-<BR>[Called By]<UL><LI><a href="#[d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;QSPI_Read
-<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<BR>[Called By]<UL><LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[ee]"></a>__scatterload_copy</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_copy), UNUSED)
+<P><STRONG><a name="[f1]"></a>__scatterload_copy</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_copy), UNUSED)
 
-<P><STRONG><a name="[ef]"></a>__scatterload_null</STRONG> (Thumb, 2 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_null), UNUSED)
+<P><STRONG><a name="[f2]"></a>__scatterload_null</STRONG> (Thumb, 2 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_null), UNUSED)
 
-<P><STRONG><a name="[f0]"></a>__scatterload_zeroinit</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_zeroinit), UNUSED)
+<P><STRONG><a name="[f3]"></a>__scatterload_zeroinit</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_zeroinit), UNUSED)
 
 <P><STRONG><a name="[99]"></a>fputc</STRONG> (Thumb, 18 bytes, Stack size 16 bytes, usart.o(i.fputc))
 <BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = fputc &rArr; HAL_UART_Transmit &rArr; UART_WaitOnFlagUntilTimeout
@@ -1203,22 +1239,24 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> printf5.o(i.__0printf$5)
 </UL>
-<P><STRONG><a name="[96]"></a>main</STRONG> (Thumb, 184 bytes, Stack size 32 bytes, main.o(i.main))
-<BR><BR>[Stack]<UL><LI>Max Depth = 384<LI>Call Chain = main &rArr; MX_QUADSPI_Init &rArr; HAL_QSPI_Init &rArr; HAL_QSPI_MspInit &rArr; HAL_RCCEx_PeriphCLKConfig &rArr; RCCEx_PLL3_Config
+<P><STRONG><a name="[96]"></a>main</STRONG> (Thumb, 218 bytes, Stack size 512 bytes, main.o(i.main))
+<BR><BR>[Stack]<UL><LI>Max Depth = 868<LI>Call Chain = main &rArr; QSPI_SetQuardEnable &rArr; QSPI_WriteStatusReg &rArr; QSPI_AutoPollingWriteEnabled &rArr; HAL_QSPI_Command &rArr; QSPI_Config
 </UL>
-<BR>[Calls]<UL><LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;QSPI_Write
+<BR>[Calls]<UL><LI><a href="#[d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;QSPI_Write
+<LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;QSPI_SetQuardEnable
 <LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;QSPI_ReadJEDEC
-<LI><a href="#[d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;QSPI_Read
+<LI><a href="#[d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;QSPI_QuadOutputFastRead
 <LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;QSPI_InitFlash
 <LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;QSPI_EraseSector
 <LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_QUADSPI_Init
 <LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_LPUART1_UART_Init
-<LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_GPIO_Init
+<LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_GPIO_Init
 <LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Init
 <LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Delay
-<LI><a href="#[d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemClock_Config
-<LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
-<LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rand
+<LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemClock_Config
+<LI><a href="#[e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
+<LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr4
+<LI><a href="#[e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rand
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> entry9a.o(.ARM.Collect$$$$0000000B)
 </UL><P>
@@ -1277,9 +1315,10 @@ Local Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_QSPI_AutoPolling
 </UL>
-<BR>[Called By]<UL><LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;QSPI_Write
+<BR>[Called By]<UL><LI><a href="#[d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;QSPI_Write
 <LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;QSPI_InitFlash
 <LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;QSPI_EraseSector
+<LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;QSPI_WriteStatusReg
 </UL>
 
 <P><STRONG><a name="[d1]"></a>QSPI_AutoPollingWriteEnabled</STRONG> (Thumb, 98 bytes, Stack size 104 bytes, qspi_flash.o(i.QSPI_AutoPollingWriteEnabled))
@@ -1288,14 +1327,15 @@ Local Symbols
 <BR>[Calls]<UL><LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_QSPI_Command
 <LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_QSPI_AutoPolling
 </UL>
-<BR>[Called By]<UL><LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;QSPI_Write
+<BR>[Called By]<UL><LI><a href="#[d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;QSPI_Write
 <LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;QSPI_EraseSector
+<LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;QSPI_WriteStatusReg
 </UL>
 
-<P><STRONG><a name="[dd]"></a>_printf_core</STRONG> (Thumb, 658 bytes, Stack size 104 bytes, printf5.o(i._printf_core), UNUSED)
+<P><STRONG><a name="[df]"></a>_printf_core</STRONG> (Thumb, 658 bytes, Stack size 104 bytes, printf5.o(i._printf_core), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_uldivmod
 </UL>
-<BR>[Called By]<UL><LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__0printf$5
+<BR>[Called By]<UL><LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__0printf$5
 </UL>
 <P>
 <H3>

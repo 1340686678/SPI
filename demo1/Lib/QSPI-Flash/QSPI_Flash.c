@@ -37,7 +37,6 @@ static uint8_t QSPI_AutoPollingWriteEnabled()
 	QSPI_AutoPollingTypeDef s_config;
 
 	/* 启用写操作 */
-
 	s_command.InstructionMode   = QSPI_INSTRUCTION_1_LINE;
 	s_command.Instruction       = QSPI_CMD_WRITE_ENABLE;	//写入写使能
 	s_command.AddressMode       = QSPI_ADDRESS_NONE;
@@ -78,18 +77,20 @@ static uint8_t QSPI_AutoPollingWriteEnabled()
  *
  * 四线模式读取数据前必须使能四线模式
  */
-uint8_t QSPI_SetQuardEnable(bool enable){
+uint8_t QSPI_SetQuardEnable(bool enable)
+{
 	// 读取状态寄存器
 	uint8_t regValue;
 	if (QSPI_ReadStatusReg(2, &regValue) != QSPI_OK) {
 		return QSPI_ERROR;
 	}
 
-	enable = enable ? QSPI_FSR_QE : 0;
+	// enable = enable ? QSPI_FSR_QE : 0;
 	if((regValue & QSPI_FSR_QE) == (enable ? QSPI_FSR_QE : 0) ){
 		return QSPI_OK;
 	}
 
+	
 	if(enable){
 		regValue |= QSPI_FSR_QE;
 	}else{
@@ -101,7 +102,6 @@ uint8_t QSPI_SetQuardEnable(bool enable){
 		return QSPI_ERROR;
 	}
 
-	// 配置自动轮询模式等待QE就绪
 	QSPI_CommandTypeDef s_command;
 	QSPI_AutoPollingTypeDef s_config;
 	s_command.InstructionMode   = QSPI_INSTRUCTION_1_LINE;
@@ -120,6 +120,8 @@ uint8_t QSPI_SetQuardEnable(bool enable){
 	s_config.StatusBytesSize    = 1;
 	s_config.Interval           = 0x10;
 	s_config.AutomaticStop      = QSPI_AUTOMATIC_STOP_ENABLE;
+	
+	// 配置自动轮询模式等待QE就绪
 	if (HAL_QSPI_AutoPolling(&QSPI_HANDLE, &s_command, &s_config, AUTO_PULLING_WAIT_TIME) != HAL_OK) {
 		return QSPI_ERROR;
 	}
@@ -186,8 +188,8 @@ uint32_t QSPI_ReadJEDEC(void){
 	return value[0] << 16 | value[1] << 8 | value[2];
 }
 
-uint8_t QSPI_ReadStatusReg(uint8_t regNo, uint8_t *value){
-
+uint8_t QSPI_ReadStatusReg(uint8_t regNo, uint8_t *value)
+{
 	QSPI_CommandTypeDef s_command;
 
 	if (regNo == 1) {
@@ -205,7 +207,7 @@ uint8_t QSPI_ReadStatusReg(uint8_t regNo, uint8_t *value){
 	s_command.AlternateByteMode = QSPI_ALTERNATE_BYTES_NONE;
 	s_command.DataMode          = QSPI_DATA_1_LINE;
 	s_command.DummyCycles       = 0;
-	s_command.NbData            = 1;
+	s_command.NbData            = 1;	//接受一个字节数据
 	s_command.DdrMode           = QSPI_DDR_MODE_DISABLE;
 	s_command.DdrHoldHalfCycle  = QSPI_DDR_HHC_ANALOG_DELAY;
 	s_command.SIOOMode          = QSPI_SIOO_INST_EVERY_CMD;
@@ -220,12 +222,8 @@ uint8_t QSPI_ReadStatusReg(uint8_t regNo, uint8_t *value){
 	return QSPI_OK;
 }
 
-/**
-  * @brief  读取ReadStatusReg
-  * @param 	无
-  * @retval ReadStatusReg
-  */
-uint8_t QSPI_WriteStatusReg(uint8_t regNo, uint8_t regValue) {
+uint8_t QSPI_WriteStatusReg(uint8_t regNo, uint8_t regValue) 
+{
 	QSPI_CommandTypeDef s_command;
 
 	if (regNo == 1) {
@@ -248,7 +246,7 @@ uint8_t QSPI_WriteStatusReg(uint8_t regNo, uint8_t regValue) {
 	s_command.AlternateByteMode = QSPI_ALTERNATE_BYTES_NONE;
 	s_command.DataMode          = QSPI_DATA_1_LINE;
 	s_command.DummyCycles       = 0;
-	s_command.NbData            = 1;
+	s_command.NbData            = 1;	//写入一位
 	s_command.DdrMode           = QSPI_DDR_MODE_DISABLE;
 	s_command.DdrHoldHalfCycle  = QSPI_DDR_HHC_ANALOG_DELAY;
 	s_command.SIOOMode          = QSPI_SIOO_INST_EVERY_CMD;
@@ -257,10 +255,12 @@ uint8_t QSPI_WriteStatusReg(uint8_t regNo, uint8_t regValue) {
 	{
 		return QSPI_ERROR;
 	}
+
 	if (HAL_QSPI_Transmit(&QSPI_HANDLE, &regValue, CONTROL_COMMANS_MAX_TIME) != HAL_OK)
 	{
 		return QSPI_ERROR;
 	}
+
 	/* 自动轮询模式等待存储器就绪 */
 	if (QSPI_AutoPollingMemReady(AUTO_PULLING_WAIT_TIME) != QSPI_OK)
 	{
@@ -270,6 +270,7 @@ uint8_t QSPI_WriteStatusReg(uint8_t regNo, uint8_t regValue) {
 	return QSPI_OK;
 }
 
+//芯片全部擦除
 uint8_t QSPI_EraseChip(void)
 {
 	QSPI_CommandTypeDef s_command;
@@ -305,6 +306,7 @@ uint8_t QSPI_EraseChip(void)
 	return QSPI_OK;
 }
 
+//块擦除
 uint8_t QSPI_EraseBlock64K(uint32_t BlockAddress) {
 	// 初始化擦除命令
 	QSPI_CommandTypeDef s_command;
@@ -338,6 +340,7 @@ uint8_t QSPI_EraseBlock64K(uint32_t BlockAddress) {
 	return QSPI_OK;
 }
 
+//扇区擦除
 uint8_t QSPI_EraseSector(uint32_t SectorAddress) {
 	// 初始化擦除命令
 	QSPI_CommandTypeDef s_command;
@@ -570,7 +573,8 @@ uint8_t QSPI_EnableMemoryMapped(void){
 /**
  * 在双线模式下启动内存映射模式
  */
-uint8_t QSPI_EnableDualLineMemoryMapped(void){
+uint8_t QSPI_EnableDualLineMemoryMapped(void)
+{
 	QSPI_CommandTypeDef sCommand;
 
 	// Instruction every command
